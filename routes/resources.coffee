@@ -10,7 +10,7 @@ routes = (app) ->
     resource = db.collection(req.params.resource)
     resource.find().toArray (err, docs) ->
       throw err if err
-      res.send docs
+      res.json docs
 
 
   # POST /bookmarks
@@ -18,7 +18,7 @@ routes = (app) ->
     resource = db.collection(req.params.resource)
     resource.insert req.body, (err, docs) ->
       throw err if err
-      res.send docs
+      res.json docs
 
 
   # GET /bookmarks/:id
@@ -26,7 +26,7 @@ routes = (app) ->
     resource = db.collection(req.params.resource)
     resource.findById req.params.id, (err, docs) ->
       throw err if err
-      res.send docs
+      res.json docs
 
 
   # PUT /bookmarks/:id
@@ -35,7 +35,7 @@ routes = (app) ->
     resource = db.collection(req.params.resource)
     resource.updateById req.params.id, req.body, {}, (err, docs) ->
       throw err if err
-      res.send docs
+      res.json docs
 
 
   # DELETE /bookmarks/:id
@@ -43,7 +43,7 @@ routes = (app) ->
     resource = db.collection(req.params.resource)
     resource.removeById req.params.id, {}, (err, docs) ->
       throw err if err
-      res.send docs
+      res.send json
 
 
 module.exports = routes
