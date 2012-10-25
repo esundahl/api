@@ -5,7 +5,7 @@ db = mongo.db('localhost:27017/api')
 routes = (app) ->
 
 
-  # GET /bookmarks
+  # GET /:resource
   app.get '/:resource', (req, res) ->
     resource = db.collection(req.params.resource)
     resource.find().toArray (err, docs) ->
@@ -13,7 +13,7 @@ routes = (app) ->
       res.json docs
 
 
-  # POST /bookmarks
+  # POST /:resource
   app.post '/:resource', (req, res) ->
     resource = db.collection(req.params.resource)
     resource.insert req.body, (err, docs) ->
@@ -21,7 +21,7 @@ routes = (app) ->
       res.json docs
 
 
-  # GET /bookmarks/:id
+  # GET /:resource/:id
   app.get '/:resource/:id', (req, res) ->
     resource = db.collection(req.params.resource)
     resource.findById req.params.id, (err, docs) ->
@@ -29,7 +29,7 @@ routes = (app) ->
       res.json docs
 
 
-  # PUT /bookmarks/:id
+  # PUT /:resource/:id
   app.put '/:resource/:id', (req, res) ->
     delete req.body._id
     resource = db.collection(req.params.resource)
@@ -38,7 +38,7 @@ routes = (app) ->
       res.json docs
 
 
-  # DELETE /bookmarks/:id
+  # DELETE /:resource/:id
   app.delete '/:resource/:id', (req, res) ->
     resource = db.collection(req.params.resource)
     resource.removeById req.params.id, {}, (err, docs) ->
