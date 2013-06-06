@@ -7,7 +7,7 @@ This is a simple restful resource server that accepts any resource as the first 
 Usage
 -----
 
-First start the index.coffee application and then save resources using the following routes
+First start a mongodb server on port 27017 then run the index.coffee application. Finally save resources using the following routes
 
 
 Returns a JSON object with all documents in the collection :resource
